@@ -9,7 +9,7 @@ app.config(function($stateProvider, $urlRouterProvider){
 		.state('profile', {
 			url: '/profile',
 			templateUrl: '',
-			controller: 'profileCtrl'
+			controllerAs: 'profileCtrl as pr'
 		})
 		.state('dashboard', {
 			url: '/dashboard',
