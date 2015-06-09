@@ -1,14 +1,15 @@
 [
 	{
 		"name" : "",
+		"guestNumber" : "",
 		"email" : "",
-		"password" : "",
+		"time" : "",
 		"phoneNumber" : "",
 		"creditCard" : [ {
 			"cardName" : "",
 			"cardNumber" : "",
 			"cardExp" : ""
 		}],
-		"favoriteList" : {}
+		"orderCart": [{"_id": ""}]
 	}
 ]
