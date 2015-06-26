@@ -3,7 +3,14 @@ html, body {
 	height: 100%;
 	margin: 0;
 	padding: 0;
-	background: #574C4F;
+	background: url(images/family-eating.jpg) no-repeat center center fixed;
+	background-attachment: fixed;
+    background-size: cover;
+    -moz-background-size: cover;
+}
+
+a:hover {
+	text-decoration: none;
 }
 
 /*findRestaurant.html*/
@@ -49,7 +56,8 @@ html, body {
 	flex-direction: column;
 }
 
-/*.border-menu {
+
+.border-menu {
   position: relative;
   padding-left: 1.25em;
 }
@@ -62,7 +70,7 @@ html, body {
   height: 0.125em;
   border-top: 0.375em double #000;
   border-bottom: 0.125em solid #000;
-}*/
+}
 
 /*styling for mobile menu button on navigation bar*/
 .main-pulldown {
@@ -76,6 +84,11 @@ html, body {
 
 .distance {
 	display: inline-block;
+}
+
+.hours {
+	display: flex;
+	flex-direction: column;
 }
 
 
@@ -130,4 +143,44 @@ html, body {
 
 #target {
 	width: 345px;
+}
+
+/*Styling for DatePicker elements in ClientPublic/views/Restaurant.html*/
+
+.full button span {
+	background-color: limegreen;
+	border-radius: 32px;
+	color: black;
+}
+.partially button span {
+	background-color: orange;
+	border-radius: 32px;
+	color: black;
+}
+
+/*Profile Page Styling*/
+
+.profileheader {
+    font-size: 27px;
+    font-weight: bold;
+}
+
+.profileicon {
+    color: #36A0FF;
+}
+
+
+
+.profileView {
+	height: 100%;
+	margin: 0 auto;
+}
+
+.textedOutput {
+	font-size: 25px;
+	margin: 0;
+}
+
+.profile-item {
+	padding: 10px 0px
 }

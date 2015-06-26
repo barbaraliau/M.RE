@@ -1,5 +1,5 @@
 var mongoose = require('mongoose');
-var bcrypt = require('bcrypt-nodejs'); // required for windows users*
+var bcrypt = require('bcryptjs'); // required for windows users*
 // if using linux or apple ios, use bcrypt
 var Schema = mongoose.Schema;
 var q = require('q');
@@ -20,13 +20,15 @@ var userClientSchema = new mongoose.Schema({
 	creditCard: [
 		{ 
 			cardName: String,
-			cardNumber: { type: Number , required: true, unique: true},
-			cardExp: { type: Number , required: true, unique: true}
+			cardNumber: { type: Number},
+			cardExp: { type: Number}
 		}
 	],
 		
 
-	favoriteList: [{type: Schema.Types.ObjectId, ref: 'UserRestaurant'}]
+	favoriteList: [{type: Schema.Types.ObjectId, ref: 'UserRestaurant'}],
+
+	resvHistory: [{type: Schema.Types.ObjectId, ref: 'UserReservation'}]
 
 });
 
@@ -41,7 +43,7 @@ userClientSchema.pre('save', function(next) {
 		if(err) {
 			return next();
 		}
-		bcrypt.hash(user.password, salt, null, function(err, hash) {
+		bcrypt.hash(user.password, salt, function(err, hash) {
 			if (err) {
 				return next();
 			}

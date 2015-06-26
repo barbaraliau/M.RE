@@ -2,10 +2,11 @@ var Client = require('../models/clientModel');
 
 module.exports = {
 	create: function(req, res) {
+		console.log("clientController req.body: ", req.body)
 		var newClient = new Client(req.body);
 		newClient.save(function(err, result) {
 			if (err) {
-				return res.status(500).res.send(err);
+				return res.status(500).send(err);
 			} else {
 				return res.send(result);
 			}
@@ -14,10 +15,10 @@ module.exports = {
 
 	read: function(req, res) {
 		Client
-		.find(req.query)
+		.find(req.user._id)
 		.exec(function(err, result) {
 			if (err) {
-				return res.status(500).res.send(err);
+				return res.status(500).send(err);
 			} else {
 				return res.send(result);
 			}
@@ -25,9 +26,9 @@ module.exports = {
 	},
 
 	update: function(req, res) {
-		Client.findByIdAndUpdate(req.params.id, req.body, function(err, result) {
+		Client.findByIdAndUpdate(req.user._id, req.body, function(err, result) {
 			if (err) {
-				return res.status(500).res.send(err);
+				return res.status(500).send(err);
 			} else {
 				return res.send(result);
 			}
@@ -35,9 +36,9 @@ module.exports = {
 	},
 
 	delete: function(req, res) {
-		Client.findByIdAndRemove(req.params.id, function(err, result) {
+		Client.findByIdAndRemove(req.user._id, function(err, result) {
 			if (err) {
-				return res.status(500).res.send(err);
+				return res.status(500).send(err);
 			} else {
 				return res.send(result);
 			}

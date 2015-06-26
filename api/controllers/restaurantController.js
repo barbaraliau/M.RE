@@ -5,7 +5,20 @@ module.exports = {
 		var newRestaurant = new Restaurant(req.body);
 		newRestaurant.save(function(err, result) {
 			if (err) {
-				return res.status(500).res.send(err);
+				return res.status(500).send(err);
+			} else {
+				return res.send(result);
+			}
+		});
+	},
+
+	readClient: function(req, res) {
+		console.log('readClient in restaurantController: ', req.query);
+		Restaurant
+		.find(req.query)
+		.exec(function(err, result) {
+			if (err) {
+				return res.status(500).send(err);
 			} else {
 				return res.send(result);
 			}
@@ -13,11 +26,25 @@ module.exports = {
 	},
 
 	read: function(req, res) {
+		console.log('restaurantController: ', req.user);
 		Restaurant
-		.find(req.query)
+		.find(req.user._id)
 		.exec(function(err, result) {
 			if (err) {
-				return res.status(500).res.send(err);
+				return res.status(500).send(err);
+			} else {
+				return res.send(result);
+			}
+		});
+	},
+
+	readById: function(req, res) {
+		console.log('read by id: ', req.params.id);
+		Restaurant
+		.findById(req.params.id)
+		.exec(function(err, result) {
+			if (err) {
+				return res.status(500).send(err);
 			} else {
 				return res.send(result);
 			}
@@ -25,9 +52,9 @@ module.exports = {
 	},
 
 	update: function(req, res) {
-		Restaurant.findByIdAndUpdate(req.params.id, req.body, function(err, result) {
+		Restaurant.findByIdAndUpdate(req.user._id, req.body, function(err, result) {
 			if (err) {
-				return res.status(500).res.send(err);
+				return res.status(500).send(err);
 			} else {
 				return res.send(result);
 			}
@@ -35,9 +62,9 @@ module.exports = {
 	},
 
 	delete: function(req, res) {
-		Restaurant.findByIdAndRemove(req.params.id, function(err, result) {
+		Restaurant.findBy_idAndRemove(req.user._id, function(err, result) {
 			if (err) {
-				return res.status(500).res.send(err);
+				return res.status(500).send(err);
 			} else {
 				return res.send(result);
 			}

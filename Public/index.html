@@ -5,8 +5,9 @@
 		<title>M.RE</title>
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
 		<link rel="stylesheet" href="style.css">
+		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 	</head>
-	<body ng-app="MRE" class="full">
+	<body ng-app="MRE" class="full main">
 			<nav class="navbar navbar-inverse" role="navigation">
 
 			    <div class="navbar-header">
@@ -15,25 +16,40 @@
 				    <ul class="nav navbar-nav">
 				        <li><a ui-sref="reservations">Reservations</a></li>
 						<li><a ui-sref="profile">Profile</a></li>
+						<li><a ui-sref="menu">Menu</a></li>
+						<li><a ui-sref="userAdmin">User Admin</a></li>
+						<li><a ui-sref="profile">Kitchen</a></li>
 				    </ul>
+					<ul class="nav navbar-nav navbar-right">
+						<li><a href="/api/auth/logout" class="RElogout" ng-click="notCollapsed = false">Log Out</a></li>
+					</ul>
 			</nav>
 			<div ui-view></div>
 
-</body>
-</html>
-
 
 			<!-- Angular -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.14/angular-ui-router.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 	<script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.12.1.js"></script>
 
 			<!-- App Js Files-->
 			<script src="app.js"></script>
 			<script src="routes/profile/ProfileCtrl.js"></script>
 			<script src="routes/profile/ProfileService.js"></script>
+			<script src="routes/menu/MenuCtrl.js"></script>
+			<script src="routes/menu/MenuService.js"></script>
 			<script src="routes/reservations/ReservationsCtrl.js"></script>
 			<script src="routes/reservations/ReservationsService.js"></script>
+			<script src="routes/reservations/Modal/reservationModalCtrl.js"></script>
+			<script src="routes/UserAdmin/UserAdminCtrl.js"></script>
+			<script src="routes/UserAdmin/UserAdminService.js"></script>
+			<script src="routes/profile/template/RestaurantsProfileCtrl.js"></script>
+			<script src="routes/profile/template/RestaurantsProfileService.js"></script>
+			<script src="routes/menu/template/AddItemCtrl.js"></script>
+			<script src="routes/menu/template/AddItemService.js"></script>
+
 
 <!--<script src="https://cdn.socket.io/socket.io-1.3.5.js"></script>
 >>>>>>> 6334bf4e429ab60234b1d59e93c72d0b4a0a8b9f

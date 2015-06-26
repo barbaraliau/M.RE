@@ -1,36 +1,45 @@
 var mongoose = require('mongoose');
-var bcrypt = require('bcrypt-nodejs'); // required for windows users*
-// if using linux or apple ios, use bcrypt
 var Schema = mongoose.Schema;
 var q = require('q');
 
 var userReservationSchema = new mongoose.Schema({
 	
-	name: {
-		first: { type: String, required: true },
-		last:  { type: String, required: true }
-	},
+	resvStatus: { type: String, enum:["Pending", "Active", "Seated", "Canceled"]},
+	
+	businessId: { type: String, required: true },
+
+	resDayAndTime: { type: Date, required: true },
+
+	resSubmitTime: { type: Date, required: true },
 
 	guestNumber: { type: Number, required: true },
-	
-	email: { type: String, required: true, unique: true	},
 
-	resvSch: [{
-		resvDate: { type: Date, required: true},
-		time: { type: Number, required: true }
-	}],
-
-	phoneNumber: {type: Number, required: true },
-
-	creditCard: [
-		{ 
-			cardName: String,
-			cardNumber: { type: Number , required: true, unique: true},
-			cardExp: { type: Number , required: true, unique: true}
-		}
+	orderCart: [
+		{ type: Schema.Types.ObjectId, ref: 'MenuItem' }
 	],
 
-	orderCart: [{type: Schema.Types.ObjectId, ref: 'MenuItem'}]
+	// creditCard: {
+	// 	cardName: String,
+	// 	cardNumber: { type: Number , required: true },
+	// 	cardExp: { type: Number , required: true }
+	// },
+
+	name: {
+		first: { type: String, required: true },
+		last: { type: String, required: true }
+	},
+
+	phoneNumber: {type: Number, required: true },
+	
+	email: { type: String }
+
+	
+
+	
+
+	
+
+	
 		
 
 });
